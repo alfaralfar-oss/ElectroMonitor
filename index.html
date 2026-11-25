@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ElectroMonitor | Monitoring Energi</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div><div class="brand">⚡ ElectroMonitor</div><div class="subtitle">Electrical Energy Monitoring</div></div>
+    <span class="status">● Mode demo</span>
+  </header>
+  <main>
+    <section class="welcome">
+      <div><p class="eyebrow">DASHBOARD</p><h1>Monitoring Energi Listrik</h1>
+      <p>Catat dan analisis penggunaan energi listrik secara sederhana.</p></div>
+      <button id="demoBtn">＋ Tambah data demo</button>
+    </section>
+    <section class="cards">
+      <article class="metric"><span>Tegangan terakhir</span><strong id="voltage">— <small>V</small></strong></article>
+      <article class="metric"><span>Arus terakhir</span><strong id="current">— <small>A</small></strong></article>
+      <article class="metric"><span>Daya terakhir</span><strong id="power">— <small>W</small></strong></article>
+      <article class="metric"><span>Total energi</span><strong id="energy">0 <small>kWh</small></strong></article>
+    </section>
+    <section class="panel">
+      <div class="panel-heading"><div><h2>Tambah pengukuran</h2><p>Masukkan data pengukuran secara manual.</p></div></div>
+      <form id="measurementForm">
+        <label>Tegangan (V)<input id="v" type="number" min="0" step="any" placeholder="Contoh: 220" required></label>
+        <label>Arus (A)<input id="i" type="number" min="0" step="any" placeholder="Contoh: 0.5" required></label>
+        <label>Durasi (jam)<input id="t" type="number" min="0" step="any" value="1" required></label>
+        <button type="submit">Simpan pengukuran</button>
+      </form>
+      <p class="note">Demo ini menghitung daya dengan P = V × I dan energi dengan E = P × waktu / 1000. Untuk AC nyata, faktor daya perlu diperhitungkan.</p>
+    </section>
+    <section class="panel">
+      <div class="panel-heading"><div><h2>Grafik daya</h2><p>Data pengukuran yang tersimpan</p></div></div>
+      <canvas id="powerChart"></canvas>
+    </section>
+    <section class="panel">
+      <div class="panel-heading"><div><h2>Riwayat pengukuran</h2><p>Data tersimpan pada browser ini</p></div><button class="secondary" id="clearBtn">Hapus riwayat</button></div>
+      <div class="table-wrap"><table><thead><tr><th>Waktu</th><th>V</th><th>A</th><th>W</th><th>Energi (kWh)</th></tr></thead><tbody id="history"></tbody></table></div>
+    </section>
+    <footer>ElectroMonitor • Project belajar Teknik Elektro • Versi 0.1</footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
